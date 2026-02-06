@@ -3,19 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Static Website</title>
+    <meta name="description" content="Modern animated landing page with theme switcher">
+    <title>Modern Landing Page | Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-        <p>This site is deployed automatically using GitHub Actions.</p>
-    </header>
+    <!-- Accessibility Controls -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Toggle accessibility panel">
+            <i class="fas fa-universal-access"></i>
+        </button>
+        <div class="accessibility-controls">
+            <h3>Accessibility</h3>
+            <div class="control-group">
+                <label for="fontSizeSlider">Font Size</label>
+                <input type="range" id="fontSizeSlider" min="12" max="24" value="16" step="1">
+                <span id="fontSizeValue">16px</span>
+            </div>
+            <div class="control-group">
+                <label>Theme</label>
+                <div class="theme-buttons">
+                    <button class="theme-btn" data-theme="default" aria-label="Default theme">
+                        <span class="theme-color" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></span>
+                    </button>
+                    <button class="theme-btn" data-theme="ocean" aria-label="Ocean theme">
+                        <span class="theme-color" style="background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%)"></span>
+                    </button>
+                    <button class="theme-btn" data-theme="sunset" aria-label="Sunset theme">
+                        <span class="theme-color" style="background: linear-gradient(135deg, #f46b45 0%, #eea849 100%)"></span>
+                    </button>
+                    <button class="theme-btn" data-theme="forest" aria-label="Forest theme">
+                        <span class="theme-color" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="darkModeToggle">Dark Mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
 
-    <main>
-        <button onclick="showMessage()">Click Me</button>
-        <p id="output"></p>
-    </main>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>MyPortfolio</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content animate-on-scroll">
+            <h1 class="hero-title">
+                Welcome to the <span class="gradient-text">Future</span>
+            </h1>
+            <p class="hero-subtitle">
+                Creating beautiful, modern web experiences with cutting-edge technology
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('portfolio')">
+                    View Portfolio
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToSection('contact')">
+                    Get in Touch
+                    <i class="fas fa-envelope"></i>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">About Me</h2>
+            <div class="about-content">
+                <div class="about-image animate-on-scroll">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+                <div class="about-text animate-on-scroll">
+                    <h3>Hello! I'm a Creative Developer</h3>
+                    <p>
+                        Passionate about creating stunning web experiences that combine beautiful design 
+                        with powerful functionality. With expertise in modern web technologies, I bring 
+                        ideas to life through clean code and innovative solutions.
+                    </p>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Web Development</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Performance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Services</h2>
+            <div class="cards-grid">
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Building responsive, fast, and scalable web applications using modern frameworks and best practices.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive and beautiful user interfaces that provide exceptional user experiences.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Optimizing websites for search engines to increase visibility and drive organic traffic.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile First</h3>
+                    <p>Designing with mobile users in mind, ensuring perfect experiences across all devices.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security</h3>
+                    <p>Implementing robust security measures to protect your data and users.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support</h3>
+                    <p>Providing ongoing support and maintenance to keep your website running smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Modern shopping experience</p>
+                        <button class="btn btn-small">View Project</button>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Data visualization tool</p>
+                        <button class="btn btn-small">View Project</button>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Social Media App</h3>
+                        <p>Connect and share</p>
+                        <button class="btn btn-small">View Project</button>
+                    </div>
+                </div>
+                <div class="portfolio-item animate-on-scroll">
+                    <div class="portfolio-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Travel Booking</h3>
+                        <p>Your next adventure</p>
+                        <button class="btn btn-small">View Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <h3>Let's work together!</h3>
+                    <p>Have a project in mind? Let's discuss how we can bring your ideas to life.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form animate-on-scroll" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required placeholder=" "></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MyPortfolio. Deployed with GitHub Actions.</p>
+            <p class="footer-tagline">Built with ❤️ and modern web technologies</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
